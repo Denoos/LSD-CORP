@@ -30,7 +30,7 @@
             <ListView Margin="10">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="Title"/>
+                        <GridViewColumn Header="Title"/> 
                         <GridViewColumn Header="Cost(Make)"/>
                         <GridViewColumn Header="Cost(Sale)"/>
                         <GridViewColumn/>
