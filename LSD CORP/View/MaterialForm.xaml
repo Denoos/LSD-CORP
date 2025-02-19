@@ -25,23 +25,18 @@
         
         <StackPanel Grid.Column="1" Grid.Row="1">
             <StackPanel Margin="25, 20">
-                <Label Content="Name"/>
-                <TextBox Text="{Binding Client.Name}"/>
+                <Label Content="Title"/>
+                <TextBox Text="{Binding Material.Title}"/>
             </StackPanel>
 
             <StackPanel Margin="25, 20">
-                <Label Content="SurName"/>
-                <TextBox Text="{Binding Client.Surname}"/>
+                <Label Content="BuyCost"/>
+                <TextBox Text="{Binding Material.BuyCost}"/>
             </StackPanel>
 
             <StackPanel Margin="25, 20">
-                <Label Content="Patronymic"/>
-                <TextBox Text="{Binding Client.Patronymic}"/>
-            </StackPanel>
-
-            <StackPanel Margin="25, 20">
-                <Label Content="Address"/>
-                <TextBox Text="{Binding Client.Address}"/>
+                <Label Content="Description"/>
+                <TextBox Text="{Binding Material.Description}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
