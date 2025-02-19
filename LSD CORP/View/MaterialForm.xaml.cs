@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace LSD_CORP
+namespace LSD_CORP.View
 {
     /// <summary>
-    /// Логика взаимодействия для FormWindow.xaml
+    /// Логика взаимодействия для MaterialForm.xaml
     /// </summary>
-    public partial class FormWindow : Window
+    public partial class MaterialForm : Window
     {
-        public FormWindow()
+        public MaterialForm()
         {
             InitializeComponent();
         }

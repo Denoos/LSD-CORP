@@ -1,11 +1,11 @@
-﻿<Window x:Class="LSD_CORP.FormWindow"
+﻿<Window x:Class="LSD_CORP.View.MaterialForm"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:LSD_CORP"
+        xmlns:local="clr-namespace:LSD_CORP.View"
         mc:Ignorable="d"
-        Title="FormWindow" Height="450" Width="800">
+        Title="MaterialForm" Height="450" Width="800">
     <Grid>
         
     </Grid>

@@ -28,6 +28,16 @@ namespace LSD_CORP
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> AddFur(Furniture fur)
+        {
+            if (fur == null || _context.Furnitures.Contains(fur))
+                return false;
+
+            await _context.Furnitures.AddAsync(fur);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<bool> DelMat(Material mat)
         {
             if (mat == null || !_context.Materials.Contains(mat))
@@ -37,19 +47,45 @@ namespace LSD_CORP
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> DelFur(Furniture fur)
+        {
+            if (fur == null || !_context.Furnitures.Contains(fur))
+                return false;
+
+            _context.Furnitures.Remove(fur);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<bool> UpdMat(Material mat)
         {
             if (mat == null)
                 return false;
-            
+
             _context.Materials.Update(mat);
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> UpdFur(Furniture fur)
+        {
+            if (fur == null)
+                return false;
+
+            _context.Furnitures.Update(fur);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
         public async Task<Material> SearchMatById(int id)
             => _context.Materials.FirstOrDefault(s => s.Id == id) ?? new();
+        public async Task<Furniture> SearchFurById(int id)
+            => _context.Furnitures.FirstOrDefault(s => s.Id == id) ?? new();
+
         public List<Material> GetAllMaterials()
             => [.. _context.Materials];
+        internal List<Furniture> GetAllFurnitures()
+            => [.. _context.Furnitures];
+
         public async Task<bool> Authorization(User user)
             => await _context.Users.FirstOrDefaultAsync(s => s.Login == user.Login && s.Password == user.Login) != null;
         public async Task<bool> Registraition(User user)
