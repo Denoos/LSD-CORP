@@ -22,6 +22,7 @@
             <Button Content="Save" Margin="5" Click="SaveClick"/>
             <Button Content="Back" Margin="5" Click="BackClick"/>
         </StackPanel>
+        
         <StackPanel Grid.Column="1" Grid.Row="1">
             <StackPanel Margin="25, 20">
                 <Label Content="Name"/>

@@ -31,17 +31,20 @@ namespace LSD_CORP.View
         public ClientForm()
         {
             InitializeComponent();
+            Client = new();
             DataContext = this;
         }
 
-        private void SaveClick(object sender, RoutedEventArgs e)
+        private async void SaveClick(object sender, RoutedEventArgs e)
         {
-
+            if (await DataBase.Instance.AddClient(Client))
+                BackClick(sender, e);
         }
 
         private void BackClick(object sender, RoutedEventArgs e)
         {
-
+            new MainWindow().Show();
+            Close();
         }
     }
 }

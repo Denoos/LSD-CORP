@@ -37,6 +37,15 @@ namespace LSD_CORP
             await _context.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> AddClient(Client clnt)
+        {
+            if (clnt == null || _context.Clients.Contains(clnt))
+                return false;
+
+            await _context.Clients.AddAsync(clnt);
+            await _context.SaveChangesAsync();
+            return true;
+        }
 
         public async Task<bool> DelMat(Material mat)
         {
@@ -83,7 +92,7 @@ namespace LSD_CORP
 
         public List<Material> GetAllMaterials()
             => [.. _context.Materials];
-        internal List<Furniture> GetAllFurnitures()
+        public List<Furniture> GetAllFurnitures()
             => [.. _context.Furnitures];
 
         public async Task<bool> Authorization(User user)
@@ -100,5 +109,7 @@ namespace LSD_CORP
             await _context.SaveChangesAsync();
             return true;
         }
+
+        
     }
 }
