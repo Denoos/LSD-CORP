@@ -19,8 +19,8 @@
         </Grid.ColumnDefinitions>
 
         <StackPanel Grid.Column="0" Grid.Row="1">
-            <Button Content="Save" Margin="5" Click="EditClick"/>
-            <Button Content="Back" Margin="5" Click="EditClick"/>
+            <Button Content="Save" Margin="5" Click="SaveClick"/>
+            <Button Content="Back" Margin="5" Click="BackClick"/>
         </StackPanel>
         <StackPanel Grid.Column="1" Grid.Row="1">
             <StackPanel Margin="25, 20">

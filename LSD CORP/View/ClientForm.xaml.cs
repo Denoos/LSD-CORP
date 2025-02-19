@@ -33,5 +33,15 @@ namespace LSD_CORP.View
             InitializeComponent();
             DataContext = this;
         }
+
+        private void SaveClick(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackClick(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
