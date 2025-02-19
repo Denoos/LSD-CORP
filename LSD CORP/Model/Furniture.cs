@@ -17,5 +17,9 @@ public partial class Furniture
 
     public double SelCost { get; set; }
 
+    public int ClientId { get; set; }
+
+    public virtual Client Client { get; set; } = null!;
+
     public virtual Material Material { get; set; } = null!;
 }

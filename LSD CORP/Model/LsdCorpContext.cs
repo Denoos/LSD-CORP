@@ -18,8 +18,6 @@ public partial class LsdCorpContext : DbContext
 
     public virtual DbSet<Client> Clients { get; set; }
 
-    public virtual DbSet<CrossClientFurniture> CrossClientFurnitures { get; set; }
-
     public virtual DbSet<Furniture> Furnitures { get; set; }
 
     public virtual DbSet<Material> Materials { get; set; }
@@ -62,43 +60,22 @@ public partial class LsdCorpContext : DbContext
                 .HasColumnName("surname");
         });
 
-        modelBuilder.Entity<CrossClientFurniture>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToTable("CrossClientFurniture");
-
-            entity.HasIndex(e => e.IdClient, "FK_CrossClientFurniture_Client_id");
-
-            entity.HasIndex(e => e.IdFurniture, "FK_CrossClientFurniture_Furniture_id");
-
-            entity.Property(e => e.IdClient)
-                .HasColumnType("int(11)")
-                .HasColumnName("id_client");
-            entity.Property(e => e.IdFurniture)
-                .HasColumnType("int(11)")
-                .HasColumnName("id_furniture");
-
-            entity.HasOne(d => d.IdClientNavigation).WithMany()
-                .HasForeignKey(d => d.IdClient)
-                .HasConstraintName("FK_CrossClientFurniture_Client_id");
-
-            entity.HasOne(d => d.IdFurnitureNavigation).WithMany()
-                .HasForeignKey(d => d.IdFurniture)
-                .HasConstraintName("FK_CrossClientFurniture_Furniture_id");
-        });
-
         modelBuilder.Entity<Furniture>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PRIMARY");
 
             entity.ToTable("Furniture");
 
+            entity.HasIndex(e => e.ClientId, "FK_Furniture_Client_id");
+
             entity.HasIndex(e => e.MaterialId, "FK_Furniture_Material_id");
 
             entity.Property(e => e.Id)
                 .HasColumnType("int(11)")
                 .HasColumnName("id");
+            entity.Property(e => e.ClientId)
+                .HasColumnType("int(11)")
+                .HasColumnName("client_id");
             entity.Property(e => e.MakeCost).HasColumnName("make_cost");
             entity.Property(e => e.MaterialCount).HasColumnName("material_count");
             entity.Property(e => e.MaterialId)
@@ -109,6 +86,11 @@ public partial class LsdCorpContext : DbContext
                 .HasMaxLength(255)
                 .HasDefaultValueSql("''")
                 .HasColumnName("title");
+
+            entity.HasOne(d => d.Client).WithMany(p => p.Furnitures)
+                .HasForeignKey(d => d.ClientId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Furniture_Client_id");
 
             entity.HasOne(d => d.Material).WithMany(p => p.Furnitures)
                 .HasForeignKey(d => d.MaterialId)

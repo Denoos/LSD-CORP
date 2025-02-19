@@ -31,10 +31,10 @@
                 <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title"/>
-                        <GridViewColumn Header="Cost(Make)"/>
-                        <GridViewColumn Header="Cost(Sale)"/>
-                        <GridViewColumn Header="Material num"/>
-                        <GridViewColumn Header="Material count"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Cost(Make)"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Cost(Sale)"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Material num"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Material count"/>
                     </GridView>
                 </ListView.View>
             </ListView>

@@ -14,4 +14,6 @@ public partial class Client
     public string? Patronymic { get; set; }
 
     public string Address { get; set; } = null!;
+
+    public virtual ICollection<Furniture> Furnitures { get; set; } = new List<Furniture>();
 }
