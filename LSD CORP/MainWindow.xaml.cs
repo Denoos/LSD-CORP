@@ -26,7 +26,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     public event PropertyChangedEventHandler? PropertyChanged;
 
     public List<Furniture> Furnitures { get => furnitures; set { furnitures = value; Signal(); } }
-    public Furniture SelectedFurniture { get => selectedFurniture; set { selectedFurniture = value; Signal(); }}
+    public Furniture SelectedFurniture { get => selectedFurniture; set { selectedFurniture = value; Signal(); } }
 
     private void Signal([CallerMemberName] string? prop = null)
         => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
@@ -40,24 +40,31 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void AddClick(object sender, RoutedEventArgs e)
     {
-
+        new FurnitureAddForm().Show();
+        Close();
     }
 
     private void EditClick(object sender, RoutedEventArgs e)
     {
-
+        new FurnitueEditForm().Show();
+        Close();
     }
 
     private void DelClick(object sender, RoutedEventArgs e)
     {
-
+        var dialogResult = MessageBox.Show("Вы уверенны?", "It will ban u))", MessageBoxButton.YesNo);
+        if (dialogResult == MessageBoxResult.Yes || dialogResult == MessageBoxResult.OK)
+            DataBase.Instance.DelFur(SelectedFurniture);
     }
 
     private void NewMatClick(object sender, RoutedEventArgs e)
-        => new MaterialForm().Show();
-
+    {
+        new MaterialForm().Show();
+        Close();
+    }
     private void NewClientClick(object sender, RoutedEventArgs e)
     {
-
+        new ClientForm().Show();
+        Close();
     }
 }

@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="Furniture" Background="Azure" Height="450" Width="800">
     <Grid>
-
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
@@ -30,15 +29,15 @@
             <ListView ItemsSource="{Binding Furnitures}" SelectedItem="{Binding SelectedFurniture}" Margin="20">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Title"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Cost(Make)"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Cost(Sale)"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Material num"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Title}" Header="Material count"/>
+                        <GridViewColumn Width="120" DisplayMemberBinding="{Binding Title}" Header="Title"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding MakeCost}" Header="Cost(Make)"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding MakeSale}" Header="Cost(Sale)"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding MaterialId}" Header="Material num"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding MaterialCount}" Header="Material count"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding ClientId}" Header="ClientNum"/>
                     </GridView>
                 </ListView.View>
             </ListView>
         </StackPanel>
-
     </Grid>
 </Window>
