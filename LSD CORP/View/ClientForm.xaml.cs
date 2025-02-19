@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -17,11 +19,19 @@ namespace LSD_CORP.View
     /// <summary>
     /// Логика взаимодействия для ClientForm.xaml
     /// </summary>
-    public partial class ClientForm : Window
+    public partial class ClientForm : Window, INotifyPropertyChanged
     {
+        private Client client;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+        public void Signal([CallerMemberName] string? prop = null)
+            => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
+
+        public Client Client { get => client; set { client = value; Signal(); } }
         public ClientForm()
         {
             InitializeComponent();
+            DataContext = this;
         }
     }
 }

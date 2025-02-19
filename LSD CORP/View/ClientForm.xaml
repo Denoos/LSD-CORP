@@ -5,8 +5,43 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LSD_CORP.View"
         mc:Ignorable="d"
-        Title="ClientForm" Height="450" Width="800">
+        Title="ClientForm" Background="Azure" Height="450" Width="800">
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="6*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Button Content="Save" Margin="5" Click="EditClick"/>
+            <Button Content="Back" Margin="5" Click="EditClick"/>
+        </StackPanel>
+        <StackPanel Grid.Column="1" Grid.Row="1">
+            <StackPanel Margin="25, 20">
+                <Label Content="Name"/>
+                <TextBox Text="{Binding Client.Name}"/>
+            </StackPanel>
+
+            <StackPanel Margin="25, 20">
+                <Label Content="SurName"/>
+                <TextBox Text="{Binding Client.Surname}"/>
+            </StackPanel>
+
+            <StackPanel Margin="25, 20">
+                <Label Content="Patronymic"/>
+                <TextBox Text="{Binding Client.Patronymic}"/>
+            </StackPanel>
+
+            <StackPanel Margin="25, 20">
+                <Label Content="Address"/>
+                <TextBox Text="{Binding Client.Address}"/>
+            </StackPanel>
+        </StackPanel>
     </Grid>
 </Window>
