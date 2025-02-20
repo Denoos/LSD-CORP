@@ -23,6 +23,7 @@
             <Button Content="Delete" Margin="5" Click="DelClick"/>
             <Button Content="NewMat" Margin="5" Click="NewMatClick"/>
             <Button Content="NewClient" Margin="5" Click="NewClientClick"/>
+            <Button Content="Dupe (Onle for testers)" Margin="5" Click="DupeClick"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
@@ -31,7 +32,7 @@
                     <GridView>
                         <GridViewColumn Width="120" DisplayMemberBinding="{Binding Title}" Header="Title"/>
                         <GridViewColumn Width="50" DisplayMemberBinding="{Binding MakeCost}" Header="Cost(Make)"/>
-                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding MakeSale}" Header="Cost(Sale)"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding SelCost}" Header="Cost(Sale)"/>
                         <GridViewColumn Width="50" DisplayMemberBinding="{Binding MaterialId}" Header="Material num"/>
                         <GridViewColumn Width="50" DisplayMemberBinding="{Binding MaterialCount}" Header="Material count"/>
                         <GridViewColumn Width="50" DisplayMemberBinding="{Binding ClientId}" Header="ClientNum"/>

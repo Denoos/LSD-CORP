@@ -34,8 +34,13 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     public MainWindow()
     {
         InitializeComponent();
-        Furnitures = DataBase.Instance.GetAllFurnitures();
+        GetAll();
         this.DataContext = this;
+    }
+
+    private async Task GetAll()
+    {
+        Furnitures = await DataBase.Instance.GetAllFurnitures();
     }
 
     private void AddClick(object sender, RoutedEventArgs e)
@@ -58,6 +63,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
             DataBase.Instance.DelFur(SelectedFurniture);
             Furnitures.Remove(SelectedFurniture);
         }
+        GetAll();
     }
 
     private void NewMatClick(object sender, RoutedEventArgs e)
@@ -69,5 +75,11 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         new ClientForm().Show();
         Close();
+    }
+
+    private async void DupeClick(object sender, RoutedEventArgs e)
+    {
+        await DataBase.Instance.DupeFur(SelectedFurniture);
+        Furnitures = await DataBase.Instance.GetAllFurnitures();
     }
 }

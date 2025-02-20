@@ -43,11 +43,11 @@ namespace LSD_CORP.View
             Furniture = furn;
         }
 
-        private void BaseForConstruct()
+        private async void BaseForConstruct()
         {
             InitializeComponent();
-            Materials = DataBase.Instance.GetAllMaterials();
-            Clients = DataBase.Instance.GetAllClients();
+            Materials = await DataBase.Instance.GetAllMaterials();
+            Clients = await DataBase.Instance.GetAllClients();
             Furniture = new();
             DataContext = this;
         }
@@ -55,6 +55,10 @@ namespace LSD_CORP.View
         private async void SaveClick(object sender, RoutedEventArgs e)
         {
             Furniture.SetMatCli();
+
+            if (await DataBase.Instance.SearchFurById(Furniture.Id) == Furniture)
+                if (await DataBase.Instance.UpdFur(Furniture))
+                    BackClick(sender, e);
             if (await DataBase.Instance.AddFur(Furniture))
                 BackClick(sender, e);
         }

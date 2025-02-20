@@ -90,11 +90,11 @@ namespace LSD_CORP
         public async Task<Furniture> SearchFurById(int id)
             => _context.Furnitures.FirstOrDefault(s => s.Id == id) ?? new();
 
-        public List<Material> GetAllMaterials()
+        public async Task<List<Material>> GetAllMaterials()
             => [.. _context.Materials];
-        public List<Client> GetAllClients()
+        public async Task<List<Client>> GetAllClients()
             => [.. _context.Clients];
-        public List<Furniture> GetAllFurnitures()
+        public async  Task<List<Furniture>> GetAllFurnitures()
             => [.. _context.Furnitures];
 
         public async Task<bool> Authorization(User user)
@@ -112,6 +112,15 @@ namespace LSD_CORP
             return true;
         }
 
-        
+        public async Task<bool> DupeFur(Furniture fur)
+        {
+            if (fur == null)
+                return false;
+
+            fur.Id = 0;
+            await _context.Furnitures.AddAsync(fur);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }
