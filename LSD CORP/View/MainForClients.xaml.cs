@@ -21,13 +21,13 @@ namespace LSD_CORP.View
     /// </summary>
     public partial class MainForClients : Window, INotifyPropertyChanged
     {
-        private List<Furniture> furnitures;
-        private Furniture selectedFurniture;
+        private List<Client> clients;
+        private Client selectedClient;
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        public List<Furniture> Furnitures { get => furnitures; set { furnitures = value; Signal(); } }
-        public Furniture SelectedFurniture { get => selectedFurniture; set { selectedFurniture = value; Signal(); } }
+        public List<Client> Clients { get => clients; set { clients = value; Signal(); } }
+        public Client SelectedClient { get => selectedClient; set { selectedClient = value; Signal(); } }
 
         private void Signal([CallerMemberName] string? prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
@@ -41,18 +41,18 @@ namespace LSD_CORP.View
 
         private async Task GetAll()
         {
-            Furnitures = await DataBase.Instance.GetAllFurnitures();
+            Clients = await DataBase.Instance.GetAllClients();
         }
 
         private void AddClick(object sender, RoutedEventArgs e)
         {
-            new FurnitureAddForm().Show();
+            new ClientAddForm().Show();
             Close();
         }
 
         private void EditClick(object sender, RoutedEventArgs e)
         {
-            new FurnitureAddForm(SelectedFurniture).Show();
+            new ClientAddForm(SelectedClient).Show();
             Close();
         }
 
@@ -61,26 +61,21 @@ namespace LSD_CORP.View
             var dialogResult = MessageBox.Show("Вы уверенны?", "It will ban u))", MessageBoxButton.YesNo);
             if (dialogResult == MessageBoxResult.Yes || dialogResult == MessageBoxResult.OK)
             {
-                await DataBase.Instance.DelFur(SelectedFurniture);
-                Furnitures = await DataBase.Instance.GetAllFurnitures();
+                await DataBase.Instance.DelClient(SelectedClient);
+                Clients = await DataBase.Instance.GetAllClients();
             }
-        }
-
-        private void NewMatClick(object sender, RoutedEventArgs e)
-        {
-            new MaterialForm().Show();
-            Close();
-        }
-        private void NewClientClick(object sender, RoutedEventArgs e)
-        {
-            new ClientForm().Show();
-            Close();
         }
 
         private async void DupeClick(object sender, RoutedEventArgs e)
         {
-            await DataBase.Instance.DupeFur(SelectedFurniture);
-            Furnitures = await DataBase.Instance.GetAllFurnitures();
+            await DataBase.Instance.DupeCl(SelectedClient);
+            Clients = await DataBase.Instance.GetAllClients();
+        }
+
+        private void BackClick(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            Close();
         }
     }
 }

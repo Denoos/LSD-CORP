@@ -55,5 +55,11 @@ namespace LSD_CORP.View
 
         private void ExitClick(object sender, RoutedEventArgs e)
             => Close();
+
+        private void AutoLog(object sender, RoutedEventArgs e)
+        {
+            new MainWindow().Show();
+            Close();
+        }
     }
 }

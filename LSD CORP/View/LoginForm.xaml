@@ -22,6 +22,7 @@
             <Button Content="Enter" Margin="5" Click="EnterClick"/>
             <Button Content="Reg" Margin="5" Click="RegClick"/>
             <Button Content="Exit" Margin="5" Click="ExitClick"/>
+            <Button Content="AutoLog(Test)" Margin="5" Click="AutoLog"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1">

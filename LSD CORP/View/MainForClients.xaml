@@ -21,17 +21,18 @@
             <Button Content="Add" Margin="5" Click="AddClick"/>
             <Button Content="Edit" Margin="5" Click="EditClick"/>
             <Button Content="Delete" Margin="5" Click="DelClick"/>
-            <Button Content="NewMat" Margin="5" Click="NewMatClick"/>
-            <Button Content="NewClient" Margin="5" Click="NewClientClick"/>
+            <Button Content="Back" Margin="5" Click="BackClick"/>
             <Button Content="Dupe (Onle for testers)" Margin="5" Click="DupeClick"/>
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <ListView ItemsSource="{Binding Furnitures}" SelectedItem="{Binding SelectedFurniture}" Margin="20">
+            <ListView ItemsSource="{Binding Clients}" SelectedItem="{Binding SelectedClient}" Margin="20">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Width="120" DisplayMemberBinding="{Binding Title}" Header="Title"/>
-                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding MakeCost}" Header="Cost(Make)"/>
+                        <GridViewColumn Width="120" DisplayMemberBinding="{Binding Name}" Header="Name"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding Surname}" Header="Surname"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding Patronymic}" Header="Patronymic"/>
+                        <GridViewColumn Width="50" DisplayMemberBinding="{Binding Address}" Header="Address"/>
                     </GridView>
                 </ListView.View>
             </ListView>

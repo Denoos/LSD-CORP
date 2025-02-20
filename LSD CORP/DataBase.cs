@@ -125,5 +125,27 @@ namespace LSD_CORP
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<bool> DelClient(Client cl)
+        {
+            if (cl == null || !_context.Clients.Contains(cl))
+                return false;
+
+            _context.Furnitures.RemoveRange(_context.Furnitures.Where(s=>s.ClientId == cl.Id));
+            _context.Clients.Remove(cl);
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> DupeCl(Client cl)
+        {
+            if (cl == null)
+                return false;
+
+            cl.Id = 0;
+            await _context.Clients.AddAsync(cl);
+            await _context.SaveChangesAsync();
+            return true;
+        }
     }
 }
