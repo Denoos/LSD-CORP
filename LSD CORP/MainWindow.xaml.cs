@@ -67,12 +67,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void NewMatClick(object sender, RoutedEventArgs e)
     {
-        new MaterialForm().Show();
+        new MainForMats().Show();
         Close();
     }
     private void NewClientClick(object sender, RoutedEventArgs e)
     {
-        new ClientForm().Show();
+        new MainForClients().Show();
         Close();
     }
 
