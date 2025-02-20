@@ -94,11 +94,14 @@ namespace LSD_CORP
             => [.. _context.Materials];
         public async Task<List<Client>> GetAllClients()
             => [.. _context.Clients];
-        public async  Task<List<Furniture>> GetAllFurnitures()
+        public async Task<List<Furniture>> GetAllFurnitures()
             => [.. _context.Furnitures];
 
         public async Task<bool> Authorization(User user)
-            => await _context.Users.FirstOrDefaultAsync(s => s.Login == user.Login && s.Password == user.Login) != null;
+        {
+            _context = new();
+            return await _context.Users.FirstOrDefaultAsync(s => s.Login == user.Login && s.Password == user.Login) != null;
+        }
         public async Task<bool> Registraition(User user)
         {
             if (string.IsNullOrWhiteSpace(user.Login) ||

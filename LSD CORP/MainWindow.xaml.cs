@@ -55,15 +55,14 @@ public partial class MainWindow : Window, INotifyPropertyChanged
         Close();
     }
 
-    private void DelClick(object sender, RoutedEventArgs e)
+    private async void DelClick(object sender, RoutedEventArgs e)
     {
         var dialogResult = MessageBox.Show("Вы уверенны?", "It will ban u))", MessageBoxButton.YesNo);
         if (dialogResult == MessageBoxResult.Yes || dialogResult == MessageBoxResult.OK)
         {
-            DataBase.Instance.DelFur(SelectedFurniture);
-            Furnitures.Remove(SelectedFurniture);
+            await DataBase.Instance.DelFur(SelectedFurniture);
+            Furnitures = await DataBase.Instance.GetAllFurnitures();
         }
-        GetAll();
     }
 
     private void NewMatClick(object sender, RoutedEventArgs e)
