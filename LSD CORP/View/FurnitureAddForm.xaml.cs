@@ -12,6 +12,7 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Media.Media3D;
 using System.Windows.Shapes;
 
 namespace LSD_CORP.View
@@ -22,21 +23,38 @@ namespace LSD_CORP.View
     public partial class FurnitureAddForm : Window, INotifyPropertyChanged
     {
         private Furniture furniture;
+        private List<Material> materials;
+        private List<Client> clients;
 
         public event PropertyChangedEventHandler? PropertyChanged;
         public void Signal([CallerMemberName] string? prop = null)
             => PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(prop));
 
         public Furniture Furniture { get => furniture; set { furniture = value; Signal(); } }
+        public List<Material> Materials { get => materials; set { materials = value; Signal(); } }
+        public List<Client> Clients { get => clients; set { clients = value; Signal(); } }
         public FurnitureAddForm()
         {
+            BaseForConstruct();
+        }
+        public FurnitureAddForm(Furniture furn)
+        {
+            BaseForConstruct();
+            Furniture = furn;
+        }
+
+        private void BaseForConstruct()
+        {
             InitializeComponent();
+            Materials = DataBase.Instance.GetAllMaterials();
+            Clients = DataBase.Instance.GetAllClients();
             Furniture = new();
             DataContext = this;
         }
 
         private async void SaveClick(object sender, RoutedEventArgs e)
         {
+            Furniture.SetMatCli();
             if (await DataBase.Instance.AddFur(Furniture))
                 BackClick(sender, e);
         }

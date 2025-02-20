@@ -46,7 +46,7 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void EditClick(object sender, RoutedEventArgs e)
     {
-        new FurnitueEditForm().Show();
+        new FurnitureAddForm(SelectedFurniture).Show();
         Close();
     }
 
@@ -54,7 +54,10 @@ public partial class MainWindow : Window, INotifyPropertyChanged
     {
         var dialogResult = MessageBox.Show("Вы уверенны?", "It will ban u))", MessageBoxButton.YesNo);
         if (dialogResult == MessageBoxResult.Yes || dialogResult == MessageBoxResult.OK)
+        {
             DataBase.Instance.DelFur(SelectedFurniture);
+            Furnitures.Remove(SelectedFurniture);
+        }
     }
 
     private void NewMatClick(object sender, RoutedEventArgs e)

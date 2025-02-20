@@ -92,6 +92,8 @@ namespace LSD_CORP
 
         public List<Material> GetAllMaterials()
             => [.. _context.Materials];
+        public List<Client> GetAllClients()
+            => [.. _context.Clients];
         public List<Furniture> GetAllFurnitures()
             => [.. _context.Furnitures];
 

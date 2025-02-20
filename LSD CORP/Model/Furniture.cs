@@ -22,4 +22,10 @@ public partial class Furniture
     public virtual Client Client { get; set; } = null!;
 
     public virtual Material Material { get; set; } = null!;
+
+    public void SetMatCli()
+    {
+        ClientId = Client.Id;
+        MaterialId = Material.Id;
+    }
 }

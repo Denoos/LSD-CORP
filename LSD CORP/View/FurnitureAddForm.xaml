@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:LSD_CORP.View"
         mc:Ignorable="d"
-        Title="FurnitureAddForm" Background="Azure" Height="450" Width="800">
+        Title="FurnitureAddForm" Background="Azure" Height="500" Width="800">
     <Grid>
 
         <Grid.RowDefinitions>
@@ -24,24 +24,34 @@
         </StackPanel>
 
         <StackPanel Grid.Column="1" Grid.Row="1">
-            <StackPanel Margin="25, 20">
-                <Label Content="Name"/>
-                <TextBox Text="{Binding Client.Name}"/>
+            <StackPanel Margin="25, 10">
+                <Label Content="Title"/>
+                <TextBox Text="{Binding Furniture.Title}"/>
             </StackPanel>
 
-            <StackPanel Margin="25, 20">
-                <Label Content="SurName"/>
-                <TextBox Text="{Binding Client.Surname}"/>
+            <StackPanel Margin="25, 10">
+                <Label Content="Client"/>
+                <ComboBox ItemsSource="{Binding Clients}" SelectedItem="{Binding Furniture.Client}"/>
+            </StackPanel>
+            
+            <StackPanel Margin="25, 10">
+                <Label Content="Material"/>
+                <ComboBox ItemsSource="{Binding Materials}" SelectedItem="{Binding Furniture.Material}"/>
             </StackPanel>
 
-            <StackPanel Margin="25, 20">
-                <Label Content="Patronymic"/>
-                <TextBox Text="{Binding Client.Patronymic}"/>
+            <StackPanel Margin="25, 10">
+                <Label Content="Mat Count"/>
+                <TextBox Text="{Binding Furniture.MaterialCount}"/>
             </StackPanel>
 
-            <StackPanel Margin="25, 20">
-                <Label Content="Address"/>
-                <TextBox Text="{Binding Client.Address}"/>
+            <StackPanel Margin="25, 10">
+                <Label Content="Sell cost"/>
+                <TextBox Text="{Binding Furniture.SelCost}"/>
+            </StackPanel>
+
+            <StackPanel Margin="25, 10">
+                <Label Content="Make cost"/>
+                <TextBox Text="{Binding Furniture.MakeCost}"/>
             </StackPanel>
         </StackPanel>
     </Grid>
